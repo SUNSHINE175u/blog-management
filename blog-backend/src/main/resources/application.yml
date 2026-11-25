@@ -1,0 +1,34 @@
+server:
+  port: 8081
+
+spring:
+  # 从 blog-backend/.env 导入本地凭据（该文件已被 .gitignore 忽略，不会提交）。
+  # .env 按 Java properties 格式解析；optional: 前缀保证文件缺失时仍能启动，
+  # 此时回落到下面 ${VAR:default} 中的默认值。
+  # 优先级：命令行参数 > 系统环境变量 > application.yml > .env
+  config:
+    import: "optional:file:.env[.properties]"
+  application:
+    name: blog-backend
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog_db?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:123456}
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+blog:
+  jwt:
+    # 无默认值：缺失时启动即报错，而不是悄悄用一个公开可知的弱密钥签发 Token。
+    # JwtUtil 用 Keys.hmacShaKeyFor() 派生 HMAC-SHA 密钥，要求至少 32 个字符（256 bit）。
+    secret: ${JWT_SECRET}
+    expiration: 86400000
