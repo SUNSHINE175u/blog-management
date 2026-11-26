@@ -1,0 +1,6 @@
+# Vue Router 用的是 createWebHistory，刷新 /article/1 这类路由时
+# 服务器上并不存在对应文件，需要回退到 index.html 交给前端路由处理。
+#
+# 注意优先级：Pages Functions > 静态资源 > _redirects。
+# 所以 /api/* 仍然会先被 functions/api/[[path]].js 接管，不会走到这里。
+/*  /index.html  200
