@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **Spring Boot 3.2.5** backend for a blog management system (graduation project). It provides REST APIs for article management, categories, tags, comments, and JWT-based admin authentication. The frontend is a Vue 3 application (separate repository).
+This is a **Spring Boot 3.2.5** backend for a blog management system (graduation project). It provides REST APIs for article management, categories, tags, comments, and JWT-based admin authentication. The frontend is a Vue 3 + Vite SPA in the sibling `../blog-frontend/` directory — this is a monorepo (backend, frontend, and `../sql/init.sql` together); see `../CLAUDE.md` for the whole-project overview.
 
 - **Java**: 17
 - **Build tool**: Maven
@@ -18,7 +18,7 @@ This is a **Spring Boot 3.2.5** backend for a blog management system (graduation
 # Compile
 mvn clean compile
 
-# Run the application (starts on port 8080)
+# Run the application (starts on port 8081)
 mvn spring-boot:run
 
 # Build JAR

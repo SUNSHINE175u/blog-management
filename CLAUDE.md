@@ -18,7 +18,7 @@ This is a graduation-project blog management system with a Spring Boot 3 backend
 
 1. **MySQL**: Run `sql/init.sql` to create the `blog_db` database with sample data. The script drops and recreates all tables.
 2. **Backend**: Copy `blog-backend/.env.example` to `blog-backend/.env` and set `DB_USERNAME`, `DB_PASSWORD` and `JWT_SECRET` there. `.env` is git-ignored. `application.yml` keeps only the `root / 123456` fallback defaults for the datasource; `JWT_SECRET` has no default, so the backend refuses to start until `.env` supplies it (≥32 characters).
-3. **Frontend**: The Vite dev server proxies `/api` requests to `http://localhost:8080` (see `vite.config.js`). If the backend runs on a different port, update the proxy target.
+3. **Frontend**: The Vite dev server proxies `/api` requests to `http://localhost:8081` (see `vite.config.js`), matching `server.port` in `application.yml`. If you change the backend port, update both.
 
 ## Build & Run Commands
 
